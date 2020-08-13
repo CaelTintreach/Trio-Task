@@ -1,12 +1,11 @@
-#Use Python Image
-
-# Install apt dependencies
+FROM python:3.6.8
  
-# Copy contents into image
+COPY . .
  
 # run pip dependencies
+#Unsure what is meant by this
+RUN pip3 install -r requirements.txt
  
-# Expose correct port
+EXPOSE 5000
 
-# Create an entrypoint
-
+ENTRYPOINT ["/usr/local/bin/python3", "app.py"]

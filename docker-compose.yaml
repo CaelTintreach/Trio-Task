@@ -1,0 +1,26 @@
+version: 3.7
+services: 
+  flask-app:
+    build: ./flask-app
+    ports:
+    - target: 5000
+      published: 5000
+      protocol: tcp
+    depends_on:
+	  - db
+    environment:
+      SECRET_KEY = ${SECRET_KEY}
+	  SQLALCHEMY_DATABASE_URI = ${DATABASE_URI}
+  nginx:
+	image: nginx:latest
+	container_name: nginx
+	volumes:
+	- type: bind
+	  source: ./nginx.conf
+	  target: /etc/nginx/nginx.conf
+  db:
+    build: ./db
+    container_name: db
+    volumes:
+      - 
+volumes:

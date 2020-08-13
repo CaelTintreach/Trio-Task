@@ -1,5 +1,7 @@
 # Derived from official mysql image (our base image)
 
+COPY . . 
+
 # Add a database
 
 # Add the content of the .sql file to your image
